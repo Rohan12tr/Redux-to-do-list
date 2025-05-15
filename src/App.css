@@ -1,6 +1,9 @@
 .App {
   text-align: center;
+  width: 50%;
+    margin: 0 auto;
 }
+
 
 .App-logo {
   height: 40vmin;
@@ -35,4 +38,112 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+
+/* TodoWrapper.css */
+.todo-wrapper {
+  padding: 20px;
+  background-color: #f5f5f5;
+  width: 350px;
+  margin: 0 auto;
+  text-align: center;  
+  border-radius: 10px;
+  margin-top:20px ;
+  height: 25rem;
+  overflow: auto;
+  box-shadow: #faebd77d 0px 30px 60px -12px inset, #faebd77d 0px 18px 36px -18px inset;
+  border: 2px solid antiquewhite;
+}
+
+.todo-input {
+  padding: 10px;
+  width: 94%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  border: 1px solid wheat;
+}
+
+.todo-input:focus-visible {
+  border: 1px solid green;
+  outline: none;
+}
+button.todo-btn {
+  background: #f8f0e6;
+  border: 1px solid wheat;
+  padding: 10px 5px;
+  border-radius: 5px;
+  width: 50%;
+  margin: 0 auto;
+}
+
+form.TodoForm {
+display: grid;
+align-items: center;
+grid-template-columns: repeat(1, 1fr);
+gap: 10px;
+margin: 10px 0;
+width: 100%;
+}
+
+.todo-item {
+text-align: left;
+padding: 5px 15px;
+}
+
+.list-todo {
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+align-items: center;
+background: #faebd77d;
+padding: 0 10px;
+margin: 10px 0;
+border: 1px solid;
+}
+
+.list-icons {
+display: flex;
+column-gap: 10px;
+margin-bottom: 10px;
+}
+.list-todo p {
+padding: 0;
+margin: 5px;
+padding: 10px 0px;
+}
+
+.list-icons svg:hover{
+cursor: pointer;
+}
+
+.task {
+cursor: pointer;  
+}
+p.completed.task {
+text-decoration: line-through;
+color:red;
+}
+p.completed.description {
+text-decoration: line-through;
+color: red;
+}
+
+.edit-icon:hover {
+color: green;
+}
+.delete-icon:hover{
+color:red;
+}
+.list-icons {
+display: flex;
+column-gap: 10px;
+margin-bottom: 10px;
+}
+input.todo-input.inp-error {
+border-color: red;
+}
+.list-icons button {
+border: none;
 }
