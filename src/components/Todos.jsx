@@ -2,27 +2,102 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { useDispatch } from "react-redux";
+import { removeTodo } from "../redux/todoapp/actions/Index";
+import { isCompleted } from "../redux/todoapp/actions/Index";
+import { isEditing } from "../redux/todoapp/actions/Index";
+import UpdateTodo from "./UpdateTodo";
+
 
 function Todos() {
   const Todos = useSelector((state) => state.OperationsReducer);
+  const dispatch = useDispatch();
   console.log(Todos);
   return (
     <div>
-      <h1>Todos List</h1>
+      {Todos.length > 0 && (
+             <h2>Todos List</h2>
+      )}
+     
 
-      {Todos.map((todo) => {
+      {/* {Todos.map((todo) => {
         return (
           <div className="list-todo" key={todo.id}>
-            <p><b>Task :</b> {todo.todo}</p>
-            <p> <b>Description :</b> {todo.description} </p>
+            <p>
+              <b>Task :</b> <span className={`${todo.completed?"completed":"incompleted"}`}>{todo.todo}</span>
+            </p>
+            <p>
+              {" "}
+              <b>Description :</b> <span className={`${todo.completed?"completed":"incompleted"}`}>{todo.description} </span>{" "}
+            </p>
+            <p className="checkbox">
+              <input
+                type="checkbox"
+                checked={todo.completed}
+                onChange={() => dispatch(isCompleted(todo.id))}
+              />
+              <span>Task Completed </span> <span>{todo.completed ? "✔️"  : "❎"}</span>
+            </p>
             <div className="list-icons">
-        <FontAwesomeIcon className="edit-icon"icon={faPenToSquare}/>
-        <FontAwesomeIcon className="delete-icon"  icon={faTrash}/>
-
-      </div>
+              <FontAwesomeIcon
+               onClick={()=>dispatch(isEditing(todo.id))}
+               className="edit-icon" icon={faPenToSquare} />
+              <FontAwesomeIcon
+                onClick={() => dispatch(removeTodo(todo.id))}
+                className="delete-icon"
+                icon={faTrash}
+              />
+            </div>
           </div>
         );
-      })}
+      })} */}
+
+ 
+{Todos.map((todo) => {
+  return todo.isEditing ? (
+    <div className="edit-todo" key={todo.id}>
+        <UpdateTodo/>
+    </div>
+  ) : (
+    <div className="list-todo" key={todo.id}>
+      <p>
+        <b>Task :</b>{" "}
+        <span className={todo.completed ? "completed" : "incompleted"}>
+          {todo.todo}
+        </span>
+      </p>
+      <p>
+        <b>Description :</b>{" "}
+        <span className={todo.completed ? "completed" : "incompleted"}>
+          {todo.description}
+        </span>
+      </p>
+      <p className="checkbox">
+        <input
+          type="checkbox"
+          checked={todo.completed}
+          onChange={() => dispatch(isCompleted(todo.id))}
+        />
+        <span>Task Completed </span>
+        <span>{todo.completed ? "✔️" : "❎"}</span>
+      </p>
+      <div className="list-icons">
+        <FontAwesomeIcon
+          onClick={() => dispatch(isEditing(todo.id))}
+          className="edit-icon"
+          icon={faPenToSquare}
+        />
+        <FontAwesomeIcon
+          onClick={() => dispatch(removeTodo(todo.id))}
+          className="delete-icon"
+          icon={faTrash}
+        />
+      </div>
+    </div>
+  );
+})}
+
+
     </div>
   );
 }

@@ -121,11 +121,11 @@ cursor: pointer;
 .task {
 cursor: pointer;  
 }
-p.completed.task {
+.completed {
 text-decoration: line-through;
 color:red;
 }
-p.completed.description {
+.completed {
 text-decoration: line-through;
 color: red;
 }
@@ -146,4 +146,24 @@ border-color: red;
 }
 .list-icons button {
 border: none;
+}
+
+input[type="checkbox"] {
+  zoom: 1.5;
+}
+p.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.clear-all {
+  padding: 10px;
+  background-color: red;
+  color: wheat;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  border: 0px;
+  margin-bottom: 2rem;
 }

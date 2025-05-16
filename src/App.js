@@ -14,9 +14,9 @@ function App() {
     <div className="App">
       <h2>Redux To-Do-List</h2>
       <Form/>
-      <Todos/>
-      {todos.length > 0 && (
-        <button onClick={()=>dispatch(delete_all())}>clear all</button>
+     <Todos/>
+      {todos.length > 1 && (
+        <button className='clear-all' onClick={()=>dispatch(delete_all())}>clear all</button>
       )}
       
     </div>
